@@ -67,8 +67,10 @@
 
   /* ---------- Hero (dunkel) ---------- */
   .hero{background:var(--ink);color:var(--paper);padding:0 28px;position:relative;overflow:hidden}
-  .hero .wrap{position:relative;padding:130px 0 120px;display:flex;flex-direction:column;gap:0}
-  .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.30;
+  .hero .wrap{position:relative;z-index:2;padding:130px 0 120px;display:flex;flex-direction:column;gap:0}
+  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) right bottom/cover no-repeat;opacity:.55;pointer-events:none}
+  .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 6%,rgba(25,24,23,.78) 42%,rgba(25,24,23,.22) 100%),linear-gradient(0deg,rgba(25,24,23,.12) 0%,rgba(25,24,23,.5) 65%,var(--ink) 100%)}
+  .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.22;z-index:1;
     background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);
     background-size:88px 88px}
   .hero .mono{color:#9a958c;margin-bottom:34px;display:flex;gap:14px;align-items:center}
@@ -230,6 +232,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-sky" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap">
       <p class="mono rv">Personalberatung für TGA &amp; Bau · Köln</p>
