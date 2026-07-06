@@ -51,6 +51,13 @@ footer .in{max-width:980px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;ju
 footer a:hover{color:var(--ink)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
 </style>
+<link rel="canonical" href="https://senolconsulting.de/jobs/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YSC Senol Consulting">
+<meta property="og:title" content="Aktuelle Positionen in TGA & Bau — YSC Senol Consulting">
+<meta property="og:description" content="Offene Stellen: Projektleitung, Bauleitung, Fachplanung, Führungspositionen — laufend aktualisiert.">
+<meta property="og:url" content="https://senolconsulting.de/jobs/">
+<meta property="og:locale" content="de_DE">
 </head>
 <body>
 <header>
@@ -152,6 +159,25 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--coral);outline-offs
       btn.addEventListener("click", function(e){ e.stopPropagation(); copyLink(btn.getAttribute("data-anchor"), btn); });
     });
     openFromHash();
+    // Strukturierte Daten fuer Google (JobPosting je Stelle)
+    try{
+      var ld = jobs.map(function(j){
+        var et = /vollzeit|festanstellung/i.test(String(j.stellentyp||"")) ? "FULL_TIME" : undefined;
+        var o = {
+          "@context":"https://schema.org","@type":"JobPosting",
+          "title": j.jobtitel || "",
+          "description": String(j.beschreibung||"").replace(/?
+/g,"<br>"),
+          "datePosted": j.oeffnungsdatum || undefined,
+          "employmentType": et,
+          "hiringOrganization": {"@type":"Organization","name":"YSC Senol Consulting (Personalberatung — Besetzung im Kundenauftrag)","sameAs":"https://senolconsulting.de"},
+          "jobLocation": {"@type":"Place","address":{"@type":"PostalAddress","addressLocality":j.stadt||undefined,"addressRegion":j.bundesland||undefined,"postalCode":j.plz||undefined,"addressCountry":"DE"}},
+          "url": "https://senolconsulting.de/jobs/#" + domId(j)
+        };
+        return o;
+      });
+      var s=document.createElement("script"); s.type="application/ld+json"; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
+    }catch(e){}
   }).catch(function(e){
     box.innerHTML = '<p class="fehler">Die Stellen konnten gerade nicht geladen werden. Bitte später erneut versuchen.</p>';
   });
