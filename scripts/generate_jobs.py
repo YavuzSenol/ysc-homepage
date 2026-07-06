@@ -47,6 +47,20 @@ def kurzbeschreibung(text, maxlen=155):
     t = re.sub(r"\s+"," ",str(text or "")).strip()
     return (t[:maxlen-1].rsplit(" ",1)[0]+"…") if len(t)>maxlen else t
 
+def gehalt_jahreswert(text):
+    """Freitext-Gehalt ('80.000€', '90 T € p.A.') -> Jahreswert in EUR (int) oder None."""
+    t = str(text or "").strip()
+    if not t: return None
+    m = re.search(r"(\d[\d.,]*)", t)
+    if not m: return None
+    zahl = m.group(1).replace(".", "").replace(",", ".")
+    try: wert = float(zahl)
+    except ValueError: return None
+    if re.search(r"\d\s*[tT]\b|\bT\s*€", t) or wert < 1000:  # '90 T €' = Tausender
+        wert *= 1000
+    wert = int(round(wert))
+    return wert if 20000 <= wert <= 400000 else None  # Plausibilitätsfenster
+
 STIL = """
 :root{--ink:#191817;--ink-soft:#26241f;--paper:#f6f5f2;--coral:#ef9873;--coral-deep:#d97247;--muted:#6e6a63;--line:#e2dfd8}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -110,6 +124,11 @@ def seite(titel, beschreibung, kanonisch, kopf_extra, body):
 <meta property="og:description" content="{esc(beschreibung)}">
 <meta property="og:url" content="{kanonisch}">
 <meta property="og:locale" content="de_DE">
+<meta property="og:image" content="{BASIS}/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YSC Senol Consulting — Personalberatung für TGA &amp; Bau">
+<meta name="twitter:card" content="summary_large_image">
 <style>{STIL}</style>
 {kopf_extra}
 </head>
@@ -144,20 +163,33 @@ def haupt():
         anker = j["_anker"]
         url = f"{BASIS}/jobs/{anker}/"
         ort = ", ".join(x for x in [j.get("stadt"), j.get("bundesland")] if x)
+        ist_remote = str(j.get("remote"))=="true"
+        gehalt_wert = gehalt_jahreswert(j.get("gehalt"))
+        gehalt_anzeige = f"bis {gehalt_wert:,.0f} € p. a.".replace(",", ".") if gehalt_wert else None
         meta = "  ·  ".join(x for x in [ort, j.get("stellentyp"),
-                 ("Remote möglich" if str(j.get("remote"))=="true" else None), j.get("berufserfahrung")] if x)
+                 ("Remote möglich" if ist_remote else None), j.get("berufserfahrung"), gehalt_anzeige] if x)
         st = str(j.get("stellentyp") or "").lower()
         emptype = "FULL_TIME" if ("voll" in st or "festanstellung" in st) else ("PART_TIME" if "teil" in st else None)
+        # Gültigkeit: Seiten werden täglich neu generiert -> rollierend 60 Tage ab heute
+        gueltig_bis = (datetime.date.today() + datetime.timedelta(days=60)).isoformat()
         ld = {"@context":"https://schema.org","@type":"JobPosting",
               "title": j.get("jobtitel") or "",
               "description": str(j.get("beschreibung") or "").replace("\r\n","\n").replace("\n","<br>"),
               "datePosted": j.get("oeffnungsdatum") or None,
+              "validThrough": gueltig_bis,
               "employmentType": emptype,
+              "directApply": True,
               "hiringOrganization": {"@type":"Organization","name":"YSC Senol Consulting (Personalberatung, Besetzung im Kundenauftrag)","sameAs":BASIS},
               "jobLocation": {"@type":"Place","address":{"@type":"PostalAddress",
                     "addressLocality": j.get("stadt") or None, "addressRegion": j.get("bundesland") or None,
                     "postalCode": j.get("plz") or None, "addressCountry":"DE"}},
               "url": url}
+        if gehalt_wert:
+            ld["baseSalary"] = {"@type":"MonetaryAmount","currency":"EUR",
+                "value":{"@type":"QuantitativeValue","value":gehalt_wert,"unitText":"YEAR"}}
+        if ist_remote:
+            ld["jobLocationType"] = "TELECOMMUTE"
+            ld["applicantLocationRequirements"] = {"@type":"Country","name":"Deutschland"}
         ld = json.loads(json.dumps(ld))  # None-Werte bleiben; Google ignoriert null nicht -> entfernen:
         def putz(o):
             if isinstance(o, dict): return {k: putz(v) for k, v in o.items() if v is not None}
