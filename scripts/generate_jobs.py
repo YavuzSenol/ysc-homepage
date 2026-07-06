@@ -91,7 +91,7 @@ footer a:hover{color:var(--ink)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
 """
 
-FUSS = ('<footer><div class="in"><span>© 2026 YSC Senol Consulting — Personalberatung für TGA &amp; Bau</span>'
+FUSS = ('<footer><div class="in"><span>© 2026 YSC Senol Consulting · Personalberatung für TGA &amp; Bau</span>'
         '<span><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span></div></footer>')
 
 def seite(titel, beschreibung, kanonisch, kopf_extra, body):
@@ -153,7 +153,7 @@ def haupt():
               "description": str(j.get("beschreibung") or "").replace("\r\n","\n").replace("\n","<br>"),
               "datePosted": j.get("oeffnungsdatum") or None,
               "employmentType": emptype,
-              "hiringOrganization": {"@type":"Organization","name":"YSC Senol Consulting (Personalberatung — Besetzung im Kundenauftrag)","sameAs":BASIS},
+              "hiringOrganization": {"@type":"Organization","name":"YSC Senol Consulting (Personalberatung, Besetzung im Kundenauftrag)","sameAs":BASIS},
               "jobLocation": {"@type":"Place","address":{"@type":"PostalAddress",
                     "addressLocality": j.get("stadt") or None, "addressRegion": j.get("bundesland") or None,
                     "postalCode": j.get("plz") or None, "addressCountry":"DE"}},
@@ -164,18 +164,18 @@ def haupt():
             return o
         ld = putz(ld)
         mail = "mailto:info@senolconsulting.de?subject=" + urllib.request.quote("Bewerbung: " + (j.get("jobtitel") or ""))
-        body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.svg" alt="YSC — Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/jobs/">← Alle Positionen</a></nav></header>
+        body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.svg" alt="YSC Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/jobs/">← Alle Positionen</a></nav></header>
 <main>
   <p class="mono">{esc(meta) if meta else "Offene Position"}</p>
   <h1>{esc(j.get("jobtitel"))}<span class="dot"></span></h1>
-  <p class="meta">Vermittelt durch YSC Senol Consulting · Festanstellung direkt beim Auftraggeber · 100&nbsp;% vertraulich</p>
+  <p class="meta">Betreut durch YSC Senol Consulting · Festanstellung direkt beim Auftraggeber · 100&nbsp;% vertraulich</p>
   <div class="beschr">{render_beschr(j.get("beschreibung"))}</div>
   <div class="cta">
     <a class="btn btn-coral" href="{mail}">Auf diese Position bewerben</a>
     <button type="button" class="btn btn-line" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>{{this.textContent='✓ Link kopiert'}})">🔗 Link kopieren</button>
   </div>
   <div class="abschluss">
-    <div><b>Passt nicht ganz?</b><span>Viele Mandate sind nie öffentlich — ein vertrauliches Gespräch zeigt, was gerade möglich ist.</span></div>
+    <div><b>Passt nicht ganz?</b><span>Viele Mandate sind nie öffentlich; ein vertrauliches Gespräch zeigt, was gerade möglich ist.</span></div>
     <a href="mailto:info@senolconsulting.de?subject=Vertrauliches%20Karrieregespr%C3%A4ch">Karrieregespräch anfragen</a>
   </div>
 </main>
@@ -183,7 +183,7 @@ def haupt():
         kopf_extra = '<script type="application/ld+json">'+json.dumps(ld, ensure_ascii=False)+'</script>'
         os.makedirs(os.path.join(JOBS_DIR, anker), exist_ok=True)
         with open(os.path.join(JOBS_DIR, anker, "index.html"), "w", encoding="utf-8") as f:
-            f.write(seite(f'{j.get("jobtitel")} — {ort or "TGA & Bau"} | YSC Senol Consulting',
+            f.write(seite(f'{j.get("jobtitel")} · {ort or "TGA & Bau"} | YSC Senol Consulting',
                           kurzbeschreibung(j.get("beschreibung")) or "Offene Position in TGA & Bau bei YSC Senol Consulting.",
                           url, kopf_extra, body))
 
@@ -198,23 +198,23 @@ def haupt():
 // Alte Newsletter-Links (/jobs#job-<kuerzel>) auf die neue Einzelseite weiterleiten
 (function(){ var h=location.hash?decodeURIComponent(location.hash.slice(1)):""; if(h.indexOf("job-")===0){ location.replace(h.slice(4)+"/"); } })();
 </script>'''
-    body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.svg" alt="YSC — Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/">← Zur Startseite</a></nav></header>
+    body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.svg" alt="YSC Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/">← Zur Startseite</a></nav></header>
 <main>
   <p class="mono">Jobbörse · TGA &amp; Bau</p>
   <h1>Aktuelle Positionen<span class="dot"></span></h1>
-  <p class="meta" style="margin-bottom:8px">Projektleitung, Bauleitung, Fachplanung, Führungspositionen — laufend aktualisiert. Vieles besetzen wir verdeckt: Wenn nichts Passendes dabei ist, lohnt sich ein vertrauliches Gespräch trotzdem.</p>
+  <p class="meta" style="margin-bottom:8px">Projektleitung, Bauleitung, Fachplanung, Führungspositionen, laufend aktualisiert. Vieles besetzen wir verdeckt: Wenn nichts Passendes dabei ist, lohnt sich ein vertrauliches Gespräch trotzdem.</p>
   <div id="zaehler">{len(jobs)} offene Stellen · Stand {datetime.date.today().strftime("%d.%m.%Y")}</div>
   {karten}
   <div class="abschluss">
-    <div><b>Nichts Passendes dabei?</b><span>Viele Mandate sind nie öffentlich. Ein kurzes Gespräch zeigt, was gerade möglich ist — diskret und unverbindlich.</span></div>
+    <div><b>Nichts Passendes dabei?</b><span>Viele Mandate sind nie öffentlich. Ein kurzes Gespräch zeigt, was gerade möglich ist, diskret und unverbindlich.</span></div>
     <a href="mailto:info@senolconsulting.de?subject=Vertrauliches%20Karrieregespr%C3%A4ch">Karrieregespräch anfragen</a>
   </div>
 </main>
 {FUSS}
 {legacy}'''
     with open(os.path.join(JOBS_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(seite("Aktuelle Positionen in TGA & Bau — YSC Senol Consulting",
-                      "Offene Stellen in TGA und Bau: Projektleitung, Bauleitung, Fachplanung, Führungspositionen — vermittelt von YSC Senol Consulting, Köln.",
+        f.write(seite("Aktuelle Positionen in TGA & Bau · YSC Senol Consulting",
+                      "Offene Stellen in TGA und Bau: Projektleitung, Bauleitung, Fachplanung, Führungspositionen. Betreut von YSC Senol Consulting, Köln.",
                       f"{BASIS}/jobs/", "", body))
 
     # ---------- Sitemap ----------
