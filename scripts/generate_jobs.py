@@ -164,7 +164,7 @@ def haupt():
             return o
         ld = putz(ld)
         mail = "mailto:info@senolconsulting.de?subject=" + urllib.request.quote("Bewerbung: " + (j.get("jobtitel") or ""))
-        body = f'''<header><nav class="nav"><a class="brand" href="/">YSC<em>.</em></a><a class="back" href="/jobs/">← Alle Positionen</a></nav></header>
+        body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.png" alt="YSC — Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/jobs/">← Alle Positionen</a></nav></header>
 <main>
   <p class="mono">{esc(meta) if meta else "Offene Position"}</p>
   <h1>{esc(j.get("jobtitel"))}<span class="dot"></span></h1>
@@ -198,7 +198,7 @@ def haupt():
 // Alte Newsletter-Links (/jobs#job-<kuerzel>) auf die neue Einzelseite weiterleiten
 (function(){ var h=location.hash?decodeURIComponent(location.hash.slice(1)):""; if(h.indexOf("job-")===0){ location.replace(h.slice(4)+"/"); } })();
 </script>'''
-    body = f'''<header><nav class="nav"><a class="brand" href="/">YSC<em>.</em></a><a class="back" href="/">← Zur Startseite</a></nav></header>
+    body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.png" alt="YSC — Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/">← Zur Startseite</a></nav></header>
 <main>
   <p class="mono">Jobbörse · TGA &amp; Bau</p>
   <h1>Aktuelle Positionen<span class="dot"></span></h1>
