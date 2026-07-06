@@ -18,7 +18,6 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "EmploymentAgency", "name": "YSC Senol Consulting", "url": "https://senolconsulting.de", "email": "info@senolconsulting.de", "telephone": "+49 221 955 8294-0", "image": "https://senolconsulting.de/portrait.jpg", "description": "Personalberatung für die Technische Gebäudeausrüstung (TGA) und den Bau: Executive Search, Personalvermittlung und Karriereberatung. Seit 2011, aus Köln, deutschlandweit.", "address": {"@type": "PostalAddress", "streetAddress": "Im Mediapark 8", "postalCode": "50670", "addressLocality": "Köln", "addressCountry": "DE"}, "founder": {"@type": "Person", "name": "Yavuz Senol", "jobTitle": "Geschäftsführer"}, "areaServed": "DE", "knowsAbout": ["Technische Gebäudeausrüstung", "TGA", "HLS", "Elektrotechnik", "Gebäudeautomation", "Executive Search", "Personalvermittlung", "Bau"]}</script>
 </head>
 <body>
-<title>YSC Senol Consulting · Personalberatung für TGA & Bau</title>
 <style>
   :root{
     --ink:#191817;
@@ -68,11 +67,10 @@
   /* ---------- Hero (dunkel) ---------- */
   .hero{background:var(--ink);color:var(--paper);padding:0 28px;position:relative;overflow:hidden}
   .hero .wrap{position:relative;z-index:2;padding:130px 0 120px;display:flex;flex-direction:column;gap:0}
-  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) right bottom/78% auto no-repeat;opacity:1;pointer-events:none}
+  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) right bottom/78% auto no-repeat;opacity:1;pointer-events:none;
+    /* Bild läuft links weich aus — keine sichtbare Bildkante mehr */
+    -webkit-mask-image:linear-gradient(90deg,transparent 16%,#000 54%);mask-image:linear-gradient(90deg,transparent 16%,#000 54%)}
   .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,24,23,.95) 0%,rgba(25,24,23,.72) 30%,rgba(25,24,23,.22) 44%,rgba(25,24,23,0) 56%),linear-gradient(0deg,rgba(25,24,23,0) 0%,rgba(25,24,23,.1) 80%,var(--ink) 100%)}
-  .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.22;z-index:1;
-    background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);
-    background-size:88px 88px}
   .hero .mono{color:#9a958c;margin-bottom:34px;display:flex;gap:14px;align-items:center}
   .hero .mono::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral)}
   .hero h1{font-size:clamp(42px,7.2vw,92px);max-width:12em}
@@ -233,11 +231,10 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-sky" aria-hidden="true"></div>
-    <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="mono rv">Personalberatung für TGA &amp; Bau · Köln</p>
+      <p class="mono rv">Personalberatung für TGA &amp; Bau</p>
       <h1 class="disp rv">Spitzenkräfte für TGA und Bau.<br><span class="hl">Seit 2011 nichts anderes.</span></h1>
-      <p class="hero-sub rv">YSC besetzt Fach- und Führungspositionen in der Technischen Gebäudeausrüstung und im Bau, vom Systemplaner bis zur Geschäftsführung. Nicht aus der Stellenbörse, sondern aus einem seit 2011 gewachsenen Netzwerk. Diskret, persönlich, auf Augenhöhe mit der Branche.</p>
+      <p class="hero-sub rv">YSC besetzt Fach- und Führungspositionen in der Technischen Gebäudeausrüstung und im Bau — vom Systemplaner bis zur Geschäftsführung. Wir finden diese Menschen nicht über Stellenbörsen, sondern über ein persönlich gewachsenes Netzwerk. Diskret, verbindlich und auf Augenhöhe mit der Branche.</p>
       <div class="hero-ctas rv">
         <a class="btn btn-coral btn-duo" href="#unternehmen"><span class="k">Für Unternehmen</span><span class="t">Passende Kandidaten anfragen</span></a>
         <a class="btn btn-ghost btn-duo" href="#kandidaten"><span class="k">Für Kandidaten</span><span class="t">Karriereperspektiven entdecken</span></a>
@@ -248,10 +245,10 @@
   <!-- ZAHLEN -->
   <div class="stats" role="list" aria-label="YSC in Zahlen">
     <div class="wrap">
-      <div class="stat rv" role="listitem"><b>14<sup>+</sup></b><span>Jahre Personalberatung, ausschließlich für Bau und Technik, seit 2011</span></div>
-      <div class="stat rv" role="listitem"><b>3.500<sup>+</sup></b><span>Fach- und Führungskräfte im Netzwerk, aufgebaut seit 2011</span></div>
+      <div class="stat rv" role="listitem"><b>2011</b><span>gegründet — seitdem ausschließlich Personalberatung für Bau und Technik</span></div>
+      <div class="stat rv" role="listitem"><b>3.500<sup>+</sup></b><span>Fach- und Führungskräfte im persönlich aufgebauten Netzwerk</span></div>
       <div class="stat rv" role="listitem"><b>21</b><span>Positionsprofile, vom Systemplaner bis zur Geschäftsführung</span></div>
-      <div class="stat rv" role="listitem"><b>350<sup>+</sup></b><span>Besetzungen in TGA und Bau, im Schnitt zwei pro Monat seit 2011</span></div>
+      <div class="stat rv" role="listitem"><b>350<sup>+</sup></b><span>Besetzungen in TGA und Bau, im Schnitt zwei pro Monat</span></div>
     </div>
     <div class="statsmeta rv">
       <span><b>Feste Ansprechpartner</b> statt wechselnder Berater, vom Briefing bis zur Unterschrift</span>
@@ -290,12 +287,12 @@
           <p class="mono eyebrow rv">Leistungen</p>
           <h2 class="disp rv">Drei Wege, ein Anspruch<span class="dot"></span></h2>
         </div>
-        <p class="rv">Keine Lebenslauf-Weiterleitung, sondern Beratung mit Substanz, auf beiden Seiten des Tisches.</p>
+        <p class="rv">Wir beraten mit Substanz — auf beiden Seiten des Tisches: für Unternehmen und für Kandidaten.</p>
       </div>
       <div class="l-rows">
         <div class="l-row rv">
           <h3>Executive Search</h3>
-          <p class="was">Besetzung von Führungspositionen: Niederlassungs-, Bereichs- und Geschäftsleitung. Systematische Marktanalyse, verdeckte Ansprache, strukturierter Auswahlprozess. Für Positionen, bei denen ein Fehlgriff richtig teuer wird.</p>
+          <p class="was">Wir besetzen Führungspositionen — von der Niederlassungs- über die Bereichs- bis zur Geschäftsleitung. Dabei arbeiten wir mit systematischer Marktanalyse, verdeckter Ansprache und einem strukturierten Auswahlprozess.</p>
           <ul>
             <li>Geschäftsführung &amp; Niederlassungsleitung</li>
             <li>Bereichs-, Abteilungs- &amp; technische Leitung</li>
@@ -304,16 +301,16 @@
         </div>
         <div class="l-row rv">
           <h3>Personal&shy;vermittlung</h3>
-          <p class="was">Festanstellungen im Fach- und Projektbereich: Projektleitung, Bauleitung, Fachplanung, Kalkulation. Wir stellen nur vor, wen wir selbst einstellen würden: im Schnitt zwei bis drei Kandidaten, nicht zwanzig.</p>
+          <p class="was">Wir vermitteln Festanstellungen im Fach- und Projektbereich: Projektleitung, Bauleitung, Fachplanung und Kalkulation. Vorgestellt wird nur, wen wir selbst einstellen würden — im Schnitt sind das zwei bis drei Kandidaten je Position.</p>
           <ul>
             <li>Projekt- &amp; Bauleitung, Objektüberwachung</li>
             <li>Fachplanung, Kalkulation, Systemplanung</li>
-            <li>Besetzung in Wochen, nicht Quartalen</li>
+            <li>Kurze Besetzungszeiten durch das bestehende Netzwerk</li>
           </ul>
         </div>
         <div class="l-row rv">
           <h3>Karriere&shy;beratung</h3>
-          <p class="was">Für Kandidaten: ehrliche Einordnung von Marktwert, Gehalt und Perspektive, auch wenn das Ergebnis lautet: „Bleiben Sie, wo Sie sind." Wer wechselt, soll es aus guten Gründen tun.</p>
+          <p class="was">Kandidaten erhalten von uns eine ehrliche Einordnung von Marktwert, Gehalt und Perspektive — auch dann, wenn das Ergebnis lautet: „Bleiben Sie, wo Sie sind." Wer wechselt, soll es aus guten Gründen tun.</p>
           <ul>
             <li>Marktwert- &amp; Gehaltseinschätzung</li>
             <li>Diskrete Sondierung ohne Zugzwang</li>
@@ -329,13 +326,13 @@
     <div class="wrap">
       <p class="mono eyebrow rv">So arbeiten wir</p>
       <h2 class="disp rv">Vom Briefing zur Besetzung<span class="dot"></span></h2>
-      <p class="lead rv">Ein klarer Prozess, den Sie jederzeit nachvollziehen können: strukturiert, transparent und mit festen Meilensteinen statt Funkstille.</p>
+      <p class="lead rv">Ein klarer Prozess, den Sie jederzeit nachvollziehen können — strukturiert, transparent und mit festen Meilensteinen.</p>
       <div class="p-steps">
-        <div class="p-step rv"><h3>Briefing</h3><p>Anforderungsprofil, Team, Projektlandschaft, Gehaltmodell; wir klären, wen Sie wirklich brauchen. Vor Ort oder per Video.</p></div>
-        <div class="p-step rv"><h3>Active Sourcing</h3><p>Gezielte Direktansprache aus dem eigenen Netzwerk und systematische Marktrecherche, statt zu warten, wer sich bewirbt.</p></div>
-        <div class="p-step rv"><h3>Qualifizierung</h3><p>Fachliche und persönliche Eignung im strukturierten Gespräch. Wir kennen die Gewerke; Blender kommen nicht durch.</p></div>
-        <div class="p-step rv"><h3>Shortlist</h3><p>Eine kleine, belastbare Auswahl mit ehrlicher Einschätzung, inklusive der Punkte, die kritisch werden könnten.</p></div>
-        <div class="p-step rv"><h3>Closing &amp; Onboarding</h3><p>Vertragsphase, Kündigung, Start: Wir bleiben dran, bis beide Seiten sagen, dass es passt. Und danach auch.</p></div>
+        <div class="p-step rv"><h3>Briefing</h3><p>Wir klären gemeinsam, wen Sie wirklich brauchen: Anforderungsprofil, Team, Projektlandschaft und Gehaltsmodell — vor Ort oder per Video.</p></div>
+        <div class="p-step rv"><h3>Active Sourcing</h3><p>Wir sprechen passende Kandidaten gezielt und direkt an — aus dem eigenen Netzwerk und über systematische Marktrecherche.</p></div>
+        <div class="p-step rv"><h3>Qualifizierung</h3><p>Fachliche und persönliche Eignung prüfen wir im strukturierten Gespräch. Dabei hilft uns, dass wir die Gewerke aus langjähriger Praxis kennen.</p></div>
+        <div class="p-step rv"><h3>Shortlist</h3><p>Sie erhalten eine kleine, belastbare Auswahl mit ehrlicher Einschätzung — einschließlich der Punkte, die kritisch werden könnten.</p></div>
+        <div class="p-step rv"><h3>Closing &amp; Onboarding</h3><p>Wir begleiten Vertragsphase, Kündigung und Antritt — und bleiben auch nach dem Start Ansprechpartner für beide Seiten.</p></div>
       </div>
     </div>
   </section>
@@ -345,11 +342,11 @@
     <div class="wrap">
       <p class="mono eyebrow rv" style="color:var(--coral)">Fachgebiete</p>
       <h2 class="disp rv">Zu Hause in sechs Gewerken<span class="dot"></span></h2>
-      <p class="lead rv">Wir besetzen nicht „irgendwas mit Technik", sondern die Disziplinen, deren Sprache wir sprechen, vom Ingenieurbüro bis zum Rechenzentrums-Projekt.</p>
+      <p class="lead rv">Wir besetzen die Disziplinen, deren Sprache wir sprechen — vom Ingenieurbüro bis zum Rechenzentrums-Projekt.</p>
       <div class="g-grid">
         <div class="g-cell rv"><span class="mono">HLS</span><h3>Heizung · Lüftung · Sanitär</h3><p>Vom Fachplaner bis zur Abteilungsleitung: das Kerngewerk der TGA und unser Ursprung.</p></div>
         <div class="g-cell rv"><span class="mono">ELT</span><h3>Elektrotechnik</h3><p>Stark- und Schwachstrom, Energie- und Gebäudetechnik, in Planung wie Ausführung.</p></div>
-        <div class="g-cell rv"><span class="mono">MSR / GA</span><h3>Gebäudeautomation</h3><p>MSR-Technik und Gebäudeautomation: das Gewerk mit dem größten Engpass an Könnern.</p></div>
+        <div class="g-cell rv"><span class="mono">MSR / GA</span><h3>Gebäudeautomation</h3><p>MSR-Technik und Gebäudeautomation: das Gewerk mit dem größten Fachkräfte-Engpass.</p></div>
         <div class="g-cell rv"><span class="mono">KÄLTE / KLIMA</span><h3>Kälte- &amp; Klimatechnik</h3><p>Kältetechnik, Klimasysteme, Wärmepumpen: Spezialisten für ein Feld im Umbruch.</p></div>
         <div class="g-cell rv"><span class="mono">BS</span><h3>Brandschutz &amp; Sprinkler</h3><p>Anlagentechnischer Brandschutz: kleines Feld, hohe Verantwortung, rare Profile.</p></div>
         <div class="g-cell rv"><span class="mono">PLANUNG</span><h3>TGA-Gesamtplanung</h3><p>Ingenieurbüros und Generalplaner: BIM, technische Systemplanung, Projektsteuerung.</p></div>
@@ -362,11 +359,11 @@
     <div class="wrap">
       <div class="weg rv" id="unternehmen">
         <p class="mono" style="color:var(--coral-deep)">Für Unternehmen</p>
-        <h3>Die Stelle ist seit Monaten offen? Geben Sie sie uns.</h3>
-        <p>Jede unbesetzte Projektleiterstelle kostet Sie laufende Projekte, Termine und Nerven. Wir besetzen sie mit jemandem, der am ersten Tag weiß, was ein Bauzeitenplan ist.</p>
+        <h3>Eine Schlüsselposition ist offen? Sprechen Sie mit uns.</h3>
+        <p>Jede unbesetzte Projektleiterstelle kostet laufende Projekte, Termine und Geld. Wir besetzen sie mit Kandidaten, die ihr Handwerk aus der Praxis kennen und vom ersten Tag an produktiv sind.</p>
         <ul>
           <li>Direktansprache aus einem Netzwerk von über 3.500 Kontakten</li>
-          <li>Vorauswahl durch Branchenkenner, nicht durch Software</li>
+          <li>Persönliche Vorauswahl durch Branchenkenner</li>
           <li>Abwerbeschutz: Ihre Mitarbeiter sind für uns tabu</li>
         </ul>
         <a class="btn btn-ink" href="#kontakt">Jetzt Kandidaten anfragen</a>
@@ -375,7 +372,7 @@
       <div class="weg rv" id="kandidaten">
         <p class="mono" style="color:var(--coral-deep)">Für Kandidaten</p>
         <h3>Sie müssen nicht suchen, um offen zu sein.</h3>
-        <p>Ein Gespräch mit uns ist keine Bewerbung. Es ist eine ehrliche Einordnung: Was sind Sie wert, was ist draußen möglich, und lohnt sich ein Wechsel überhaupt?</p>
+        <p>Ein Gespräch mit uns ist keine Bewerbung, sondern eine ehrliche Einordnung: Was sind Sie wert, was ist am Markt möglich, und lohnt sich ein Wechsel überhaupt?</p>
         <ul>
           <li>Absolute Diskretion: kein Profil ohne Ihre Freigabe</li>
           <li>Ehrliche Gehalts- und Marktwerteinschätzung</li>
@@ -435,7 +432,7 @@
       <div class="rv">
         <p class="mono eyebrow">Jobbörse</p>
         <h2 class="disp">Aktuelle Positionen<span class="dot"></span></h2>
-        <p>Projektleitung, Bauleitung, Fachplanung, Führungspositionen, laufend aktualisiert. Vieles besetzen wir jedoch verdeckt: Wenn nichts Passendes dabei ist, lohnt das Gespräch trotzdem.</p>
+        <p>Projektleitung, Bauleitung, Fachplanung und Führungspositionen — laufend aktualisiert. Viele Positionen besetzen wir verdeckt: Wenn nichts Passendes dabei ist, lohnt sich ein Gespräch trotzdem.</p>
       </div>
       <a class="btn btn-ink rv" href="jobs/">Zur Jobbörse</a>
     </div>
@@ -445,8 +442,8 @@
   <section class="kontakt" id="kontakt">
     <div class="wrap">
       <p class="mono eyebrow rv" style="color:var(--coral)">Kontakt</p>
-      <h2 class="disp rv">Sprechen wir. Diskret, konkret, auf Augenhöhe<span class="dot"></span></h2>
-      <p class="lead rv">Ob konkreter Personalbedarf oder eine vertrauliche Karrierefrage: Ein Erstgespräch schafft Klarheit: unverbindlich und ohne Umwege.</p>
+      <h2 class="disp rv">Sprechen wir — diskret, konkret, auf Augenhöhe<span class="dot"></span></h2>
+      <p class="lead rv">Ob konkreter Personalbedarf oder eine vertrauliche Karrierefrage — ein unverbindliches Erstgespräch schafft Klarheit.</p>
       <div class="k-grid">
         <div class="k-block rv">
           <span class="mono">Telefon</span>
