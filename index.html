@@ -68,8 +68,8 @@
   /* ---------- Hero (dunkel) ---------- */
   .hero{background:var(--ink);color:var(--paper);padding:0 28px;position:relative;overflow:hidden}
   .hero .wrap{position:relative;z-index:2;padding:130px 0 120px;display:flex;flex-direction:column;gap:0}
-  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) right center/auto 100% no-repeat;opacity:1;pointer-events:none}
-  .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,24,23,.9) 0%,rgba(25,24,23,.42) 30%,rgba(25,24,23,0) 68%),linear-gradient(0deg,rgba(25,24,23,0) 0%,rgba(25,24,23,.15) 75%,var(--ink) 100%)}
+  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) center bottom/100% auto no-repeat;opacity:1;pointer-events:none}
+  .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,24,23,.95) 0%,rgba(25,24,23,.66) 34%,rgba(25,24,23,.2) 58%,rgba(25,24,23,0) 78%),linear-gradient(0deg,rgba(25,24,23,0) 0%,rgba(25,24,23,.12) 78%,var(--ink) 100%)}
   .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.22;z-index:1;
     background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);
     background-size:88px 88px}
@@ -77,12 +77,12 @@
   .hero .mono::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral)}
   .hero h1{font-size:clamp(42px,7.2vw,92px);max-width:12em}
   .hero h1 .hl{color:var(--coral)}
-  .hero-sub{margin-top:38px;font-size:20px;line-height:1.65;color:#b7b2a9;max-width:33em}
+  .hero-sub{margin-top:38px;font-size:20px;line-height:1.65;color:#c9c4bb;max-width:33em;text-shadow:0 2px 18px rgba(25,24,23,.9)}
   .hero-ctas{margin-top:52px;display:flex;gap:16px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:3px;font-weight:700;font-size:15.5px;border:1px solid transparent;transition:transform .18s,background .18s,border-color .18s}
   .btn-coral{background:var(--coral);color:var(--ink)}
   .btn-coral:hover{background:#f4a988;transform:translateY(-1px)}
-  .btn-ghost{border-color:#57534b;color:var(--paper)}
+  .btn-ghost{border-color:#57534b;color:var(--paper);background:rgba(25,24,23,.55);backdrop-filter:blur(3px)}
   .btn-ghost:hover{border-color:var(--paper)}
   .btn-duo{flex-direction:column;align-items:flex-start;gap:3px;padding:13px 26px 14px;text-align:left}
   .btn-duo .k{font-family:Consolas,"Cascadia Mono","Courier New",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.62;font-weight:400}
