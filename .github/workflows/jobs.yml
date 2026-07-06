@@ -1,0 +1,25 @@
+name: Jobboerse aktualisieren
+
+# Holt taeglich die offenen Stellen aus YAVIS (Supabase Edge Function "jobs")
+# und generiert pro Stelle eine eigene SEO-Seite + Uebersicht + Sitemap.
+on:
+  schedule:
+    - cron: '23 4 * * *'   # taeglich 04:23 UTC (~06:23 deutscher Zeit)
+  workflow_dispatch: {}     # manueller Start ueber den Actions-Tab moeglich
+
+permissions:
+  contents: write
+
+jobs:
+  aktualisieren:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stellen-Seiten generieren
+        run: python3 scripts/generate_jobs.py
+      - name: Aenderungen committen und pushen
+        run: |
+          git config user.name "yavis-jobbot"
+          git config user.email "senol@senolconsulting.de"
+          git add -A
+          git diff --cached --quiet && echo "Keine Aenderungen" || (git commit -m "Jobboerse automatisch aktualisiert ($(date -u +%Y-%m-%d))" && git push)
