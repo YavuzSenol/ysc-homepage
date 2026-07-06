@@ -68,8 +68,8 @@
   /* ---------- Hero (dunkel) ---------- */
   .hero{background:var(--ink);color:var(--paper);padding:0 28px;position:relative;overflow:hidden}
   .hero .wrap{position:relative;z-index:2;padding:130px 0 120px;display:flex;flex-direction:column;gap:0}
-  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) center bottom/100% auto no-repeat;opacity:1;pointer-events:none}
-  .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,24,23,.95) 0%,rgba(25,24,23,.66) 34%,rgba(25,24,23,.2) 58%,rgba(25,24,23,0) 78%),linear-gradient(0deg,rgba(25,24,23,0) 0%,rgba(25,24,23,.12) 78%,var(--ink) 100%)}
+  .hero-sky{position:absolute;inset:0;z-index:0;background:url(skyline.jpg) right bottom/78% auto no-repeat;opacity:1;pointer-events:none}
+  .hero-sky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,24,23,.95) 0%,rgba(25,24,23,.72) 30%,rgba(25,24,23,.22) 44%,rgba(25,24,23,0) 56%),linear-gradient(0deg,rgba(25,24,23,0) 0%,rgba(25,24,23,.1) 80%,var(--ink) 100%)}
   .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.22;z-index:1;
     background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);
     background-size:88px 88px}
@@ -91,8 +91,8 @@
   .weg .direct{font-size:14px;color:var(--muted);margin-top:14px}
   .weg .direct a{font-weight:700;color:var(--ink)}
   .weg .direct a:hover{color:var(--coral-deep)}
-  .hero-meta{margin-top:86px;padding-top:30px;border-top:1px solid var(--line-dark);display:flex;gap:44px;flex-wrap:wrap;color:#8d887f;font-size:13.5px}
-  .hero-meta b{color:var(--paper);font-weight:600}
+  .statsmeta{max-width:var(--max);margin:0 auto;display:flex;gap:44px;flex-wrap:wrap;padding:22px 0 30px;color:#8d887f;font-size:13.5px}
+  .statsmeta b{color:var(--paper);font-weight:600}
 
   /* ---------- Zahlenleiste ---------- */
   .stats{background:var(--ink);color:var(--paper);border-top:1px solid var(--line-dark);padding:0 28px}
@@ -242,11 +242,6 @@
         <a class="btn btn-coral btn-duo" href="#unternehmen"><span class="k">Für Unternehmen</span><span class="t">Passende Kandidaten anfragen</span></a>
         <a class="btn btn-ghost btn-duo" href="#kandidaten"><span class="k">Für Kandidaten</span><span class="t">Karriereperspektiven entdecken</span></a>
       </div>
-      <div class="hero-meta rv">
-        <span><b>Feste Ansprechpartner</b> statt wechselnder Berater, vom Briefing bis zur Unterschrift</span>
-        <span><b>Köln</b> · deutschlandweit tätig</span>
-        <span><b>100 % diskret</b>: Kein Profil verlässt das Haus ohne Freigabe</span>
-      </div>
     </div>
   </section>
 
@@ -257,6 +252,11 @@
       <div class="stat rv" role="listitem"><b>3.500<sup>+</sup></b><span>Fach- und Führungskräfte im Netzwerk, aufgebaut seit 2011</span></div>
       <div class="stat rv" role="listitem"><b>21</b><span>Positionsprofile, vom Systemplaner bis zur Geschäftsführung</span></div>
       <div class="stat rv" role="listitem"><b>350<sup>+</sup></b><span>Besetzungen in TGA und Bau, im Schnitt zwei pro Monat seit 2011</span></div>
+    </div>
+    <div class="statsmeta rv">
+      <span><b>Feste Ansprechpartner</b> statt wechselnder Berater, vom Briefing bis zur Unterschrift</span>
+      <span><b>Köln</b> · deutschlandweit tätig</span>
+      <span><b>100 % diskret</b>: Kein Profil verlässt das Haus ohne Freigabe</span>
     </div>
   </div>
 
