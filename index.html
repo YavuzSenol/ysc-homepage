@@ -140,7 +140,13 @@
   /* ---------- Gewerke ---------- */
   .gewerke{background:var(--ink);color:var(--paper)}
   .gewerke h2{font-size:clamp(30px,4vw,48px);margin-bottom:14px}
-  .gewerke .lead{color:#9a958c;margin-bottom:70px}
+  .gewerke .lead{color:#9a958c}
+  /* Kopfbereich: Text links, TGA-Modell rechts (Modell = farbige Legende der Gewerke) */
+  .g-head{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;margin-bottom:64px}
+  .g-modell{width:100%;height:auto;display:block}
+  .g-modell-hint{font-family:Consolas,"Cascadia Mono","Courier New",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#7d786f;margin-top:10px;text-align:right}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:9px;position:relative;top:0.5px}
+  @media (max-width:900px){.g-head{grid-template-columns:1fr;gap:40px}.g-modell-hint{text-align:left}}
   .g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-dark)}
   .g-cell{background:var(--ink);padding:34px 30px 40px;transition:background .2s}
   .g-cell:hover{background:var(--ink-soft)}
@@ -340,16 +346,24 @@
   <!-- GEWERKE -->
   <section class="gewerke" id="gewerke">
     <div class="wrap">
-      <p class="mono eyebrow rv" style="color:var(--coral)">Fachgebiete</p>
-      <h2 class="disp rv">Zu Hause in sechs Gewerken<span class="dot"></span></h2>
-      <p class="lead rv">Wir besetzen die Disziplinen, deren Sprache wir sprechen — vom Ingenieurbüro bis zum Rechenzentrums-Projekt.</p>
+      <div class="g-head">
+        <div>
+          <p class="mono eyebrow rv" style="color:var(--coral)">Fachgebiete</p>
+          <h2 class="disp rv">Zu Hause in sechs Gewerken<span class="dot"></span></h2>
+          <p class="lead rv">Wir besetzen die Disziplinen, deren Sprache wir sprechen — vom Ingenieurbüro bis zum Rechenzentrums-Projekt. Jede Farbe im Modell steht für ein Gewerk, so wie in jeder guten TGA-Planung.</p>
+        </div>
+        <figure class="rv" style="margin:0">
+          <img class="g-modell" src="tga-modell.svg" alt="Isometrisches TGA-Modell: Lüftungskanäle, Kälteleitungen, Heizung, Elektrotrasse, Sprinkler und Gebäudeautomation farblich nach Gewerken getrennt" width="1000" height="700">
+          <figcaption class="g-modell-hint">Ein Modell · sechs Gewerke</figcaption>
+        </figure>
+      </div>
       <div class="g-grid">
-        <div class="g-cell rv"><span class="mono">HLS</span><h3>Heizung · Lüftung · Sanitär</h3><p>Vom Fachplaner bis zur Abteilungsleitung: das Kerngewerk der TGA und unser Ursprung.</p></div>
-        <div class="g-cell rv"><span class="mono">ELT</span><h3>Elektrotechnik</h3><p>Stark- und Schwachstrom, Energie- und Gebäudetechnik, in Planung wie Ausführung.</p></div>
-        <div class="g-cell rv"><span class="mono">MSR / GA</span><h3>Gebäudeautomation</h3><p>MSR-Technik und Gebäudeautomation: das Gewerk mit dem größten Fachkräfte-Engpass.</p></div>
-        <div class="g-cell rv"><span class="mono">KÄLTE / KLIMA</span><h3>Kälte- &amp; Klimatechnik</h3><p>Kältetechnik, Klimasysteme, Wärmepumpen: Spezialisten für ein Feld im Umbruch.</p></div>
-        <div class="g-cell rv"><span class="mono">BS</span><h3>Brandschutz &amp; Sprinkler</h3><p>Anlagentechnischer Brandschutz: kleines Feld, hohe Verantwortung, rare Profile.</p></div>
-        <div class="g-cell rv"><span class="mono">PLANUNG</span><h3>TGA-Gesamtplanung</h3><p>Ingenieurbüros und Generalplaner: BIM, technische Systemplanung, Projektsteuerung.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#e8bc4a"></span>HLS</span><h3>Heizung · Lüftung · Sanitär</h3><p>Vom Fachplaner bis zur Abteilungsleitung: das Kerngewerk der TGA und unser Ursprung.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#a85a86"></span>ELT</span><h3>Elektrotechnik</h3><p>Stark- und Schwachstrom, Energie- und Gebäudetechnik, in Planung wie Ausführung.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#4f9e6b"></span>MSR / GA</span><h3>Gebäudeautomation</h3><p>MSR-Technik und Gebäudeautomation: das Gewerk mit dem größten Fachkräfte-Engpass.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#54a9c4"></span>KÄLTE / KLIMA</span><h3>Kälte- &amp; Klimatechnik</h3><p>Kältetechnik, Klimasysteme, Wärmepumpen: Spezialisten für ein Feld im Umbruch.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#c2453a"></span>BS</span><h3>Brandschutz &amp; Sprinkler</h3><p>Anlagentechnischer Brandschutz: kleines Feld, hohe Verantwortung, rare Profile.</p></div>
+        <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#ef9873"></span>PLANUNG</span><h3>TGA-Gesamtplanung</h3><p>Ingenieurbüros und Generalplaner: BIM, technische Systemplanung, Projektsteuerung.</p></div>
       </div>
     </div>
   </section>

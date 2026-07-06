@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" aria-hidden="true">
+<!-- Eigenes, stilisiertes BIM-/TGA-Modell (isometrisch) — Original-Vektorzeichnung für YSC, keine Fremdrechte.
+     Farblogik wie in der TGA-Planung: Gelb=Lüftung/HLS · Orange=Heizung · Blau=Kälte · Magenta=ELT · Grün=MSR/GA · Rot=Sprinkler/BS · Coral=Decke/Planung -->
+
+<!-- ===== CAD-Achsraster mit Achs-Bubbles ===== -->
+<g stroke="#4a463f" stroke-width="1" opacity=".5">
+  <path d="M40 470 L520 747"/><path d="M120 424 L600 701"/><path d="M200 378 L680 655"/><path d="M280 332 L760 609"/><path d="M360 286 L840 563"/><path d="M440 240 L920 517"/>
+  <path d="M520 240 L60 505"/><path d="M620 268 L160 533"/><path d="M720 296 L260 561"/><path d="M820 324 L360 589"/><path d="M920 352 L460 617"/>
+</g>
+<g font-family="Consolas,monospace" font-size="13" text-anchor="middle">
+  <g stroke="#6e6a63" fill="none" stroke-width="1.3">
+    <circle cx="520" cy="226" r="11"/><circle cx="620" cy="254" r="11"/><circle cx="720" cy="282" r="11"/>
+    <circle cx="30" cy="458" r="11"/><circle cx="110" cy="412" r="11"/><circle cx="190" cy="366" r="11"/>
+  </g>
+  <g fill="#8d887f">
+    <text x="520" y="231">1</text><text x="620" y="259">2</text><text x="720" y="287">3</text>
+    <text x="30" y="463">A</text><text x="110" y="417">B</text><text x="190" y="371">C</text>
+  </g>
+</g>
+
+<!-- ===== transparente Geschossdecke (Coral) ===== -->
+<path d="M330 62 L906 394 L750 484 L174 152 Z" fill="#ef9873" opacity=".12"/>
+<path d="M330 62 L906 394 L750 484 L174 152 Z" fill="none" stroke="#ef9873" stroke-width="1.2" opacity=".35"/>
+
+<!-- ===== Stützen ===== -->
+<g fill="#6e6a63" opacity=".55">
+  <rect x="252" y="140" width="13" height="330"/>
+  <rect x="700" y="392" width="13" height="240"/>
+  <rect x="470" y="264" width="13" height="300"/>
+  <rect x="852" y="430" width="11" height="180"/>
+</g>
+
+<!-- ===== Abhängungen (Gewindestangen von der Decke) ===== -->
+<g stroke="#7d786f" stroke-width="1.6" opacity=".8">
+  <path d="M352 148 L352 186"/><path d="M366 156 L366 194"/>
+  <path d="M470 216 L470 254"/><path d="M484 224 L484 262"/>
+  <path d="M586 282 L586 320"/><path d="M600 290 L600 328"/>
+  <path d="M540 156 L540 186"/><path d="M660 226 L660 254"/>
+</g>
+
+<!-- ===== OBERE EBENE: zweiter Lüftungskanal (dünner) ===== -->
+<path d="M420 120 L780 328 L754 343 L394 135 Z" fill="#e8bc4a" opacity=".92"/>
+<path d="M394 135 L754 343 L754 369 L394 161 Z" fill="#b98f28" opacity=".92"/>
+<!-- Volumenstromregler-Box im oberen Strang -->
+<path d="M560 194 L622 230 L596 245 L534 209 Z" fill="#efe9dd"/>
+<path d="M534 209 L596 245 L596 273 L534 237 Z" fill="#c9c2b4"/>
+<path d="M596 245 L622 230 L622 258 L596 273 Z" fill="#dcd5c6"/>
+<text x="640" y="238" font-family="Consolas,monospace" font-size="11" fill="#8d887f" letter-spacing="1">VVS</text>
+
+<!-- ===== HAUPTKANAL Lüftung (gelb, 3 Flächen) ===== -->
+<path d="M300 160 L664 370 L628 391 L264 181 Z" fill="#e8bc4a"/>
+<path d="M264 181 L628 391 L628 429 L264 219 Z" fill="#b98f28"/>
+<path d="M664 370 L628 391 L628 429 L664 408 Z" fill="#d3a736"/>
+<!-- Flansche auf dem Hauptkanal -->
+<g stroke="#9a751d" stroke-width="2.4">
+  <path d="M392 213 L356 234 L356 272"/>
+  <path d="M480 264 L444 285 L444 323"/>
+  <path d="M568 315 L532 336 L532 374"/>
+</g>
+
+<!-- Kanalbogen am Ende nach rechts ===== -->
+<path d="M664 370 L736 412 L700 433 L628 391 Z" fill="#e8bc4a"/>
+<path d="M628 391 L700 433 L700 471 L628 429 Z" fill="#b98f28"/>
+<path d="M736 412 L700 433 L700 471 L736 450 Z" fill="#d3a736"/>
+
+<!-- ===== Abzweig nach links + Brandschutzklappe ===== -->
+<path d="M520 287 L318 404 L354 425 L556 308 Z" fill="#e8bc4a"/>
+<path d="M318 404 L354 425 L354 461 L318 440 Z" fill="#d3a736"/>
+<path d="M354 425 L556 308 L556 344 L354 461 Z" fill="#b98f28"/>
+<!-- BSK (Brandschutzklappe) kurz nach dem Abzweig, rot markiert -->
+<g stroke="#c2453a" stroke-width="2.6" fill="none">
+  <path d="M488 306 L452 327 L488 348 L524 327 Z"/>
+  <path d="M452 327 L524 327"/>
+</g>
+<circle cx="524" cy="316" r="4" fill="#c2453a"/>
+<text x="540" y="300" font-family="Consolas,monospace" font-size="11" fill="#c2453a" letter-spacing="1">BSK</text>
+
+<!-- Fallstrang + Anschluss ===== -->
+<path d="M318 440 L354 461 L354 560 L318 539 Z" fill="#caa22f"/>
+<path d="M318 539 L354 560 L336 571 L300 550 Z" fill="#e8bc4a"/>
+<!-- VAV-Auslassbox unten -->
+<path d="M290 556 L362 598 L326 619 L254 577 Z" fill="#efe9dd"/>
+<path d="M254 577 L326 619 L326 649 L254 607 Z" fill="#c9c2b4"/>
+<path d="M326 619 L362 598 L362 628 L326 649 Z" fill="#dcd5c6"/>
+
+<!-- ===== BRANDSCHUTZ: Sprinklerleitung (rot) mit Köpfen ===== -->
+<g stroke="#c2453a" stroke-width="5" fill="none" stroke-linecap="round">
+  <path d="M370 96 L740 310"/>
+  <path d="M470 154 L470 176"/><path d="M580 218 L580 240"/><path d="M690 282 L690 304"/>
+</g>
+<g fill="#c2453a">
+  <circle cx="470" cy="182" r="5"/><circle cx="580" cy="246" r="5"/><circle cx="690" cy="310" r="5"/>
+</g>
+<!-- Sprinkler-Querverteilung -->
+<g stroke="#c2453a" stroke-width="3.4" fill="none" stroke-linecap="round">
+  <path d="M600 229 L520 275"/><path d="M520 275 L520 293"/>
+</g>
+<circle cx="520" cy="298" r="4" fill="#c2453a"/>
+
+<!-- ===== MSR/GA: Steuerleitung (grün) + Schaltschränke ===== -->
+<path d="M120 396 L430 575 L430 615 L560 690" stroke="#4f9e6b" stroke-width="4" fill="none" stroke-dasharray="10 7" stroke-linecap="round"/>
+<path d="M96 380 L152 412 L152 470 L96 438 Z" fill="#39714d"/>
+<path d="M152 412 L176 398 L176 456 L152 470 Z" fill="#2c5a3d"/>
+<path d="M96 380 L152 412 L176 398 L120 366 Z" fill="#4f9e6b"/>
+<g fill="#bfe3cc">
+  <circle cx="116" cy="404" r="3"/><circle cx="128" cy="411" r="3"/><circle cx="140" cy="418" r="3"/>
+</g>
+<!-- GLT-Panel unten rechts -->
+<path d="M548 652 L592 678 L592 700 L548 674 Z" fill="#39714d"/>
+<path d="M592 678 L612 666 L612 688 L592 700 Z" fill="#2c5a3d"/>
+<path d="M548 652 L592 678 L612 666 L568 640 Z" fill="#4f9e6b"/>
+
+<!-- ===== KÄLTE: blaue Rundrohre mit Ventilen ===== -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M150 330 L470 515 L470 590" stroke="#3f8ea8" stroke-width="13"/>
+  <path d="M178 316 L498 501 L498 576" stroke="#54a9c4" stroke-width="13"/>
+</g>
+<!-- Absperrventile mit Handrad -->
+<g stroke="#1d4653" stroke-width="3" fill="#54a9c4">
+  <path d="M310 408 L338 434 M338 408 L310 434" fill="none"/>
+  <circle cx="324" cy="399" r="7" fill="none"/>
+  <path d="M324 406 L324 421" fill="none"/>
+</g>
+<!-- Rohrschellen -->
+<g stroke="#7d786f" stroke-width="2" opacity=".85">
+  <path d="M252 382 L268 372"/><path d="M280 398 L296 388"/>
+  <path d="M400 468 L416 458"/><path d="M428 484 L444 474"/>
+</g>
+
+<!-- ===== HEIZUNG: VL/RL (orange) + Pumpe + Verteiler ===== -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M240 250 L590 452 L680 400" stroke="#c05a3e" stroke-width="7"/>
+  <path d="M258 240 L608 442 L698 390" stroke="#d97247" stroke-width="7"/>
+</g>
+<circle cx="590" cy="452" r="13" fill="#d97247" stroke="#822f10" stroke-width="2"/>
+<path d="M583 445 L601 452 L583 459 Z" fill="#26241f"/>
+<!-- Heizkreisverteiler -->
+<path d="M700 396 L764 433" stroke="#c05a3e" stroke-width="11" stroke-linecap="round" fill="none"/>
+<g stroke="#d97247" stroke-width="4" fill="none" stroke-linecap="round">
+  <path d="M716 401 L716 383"/><path d="M734 411 L734 393"/><path d="M752 421 L752 403"/>
+</g>
+<g fill="#822f10">
+  <circle cx="716" cy="380" r="3.4"/><circle cx="734" cy="390" r="3.4"/><circle cx="752" cy="400" r="3.4"/>
+</g>
+
+<!-- ===== ELT: Kabeltrassen (magenta) ===== -->
+<path d="M560 180 L860 353 L836 367 L536 194 Z" fill="#a85a86" opacity=".85"/>
+<path d="M536 194 L836 367 L836 383 L536 210 Z" fill="#7e3f63" opacity=".85"/>
+<!-- Abzweigtrasse nach unten links -->
+<path d="M700 268 L600 326" stroke="#a85a86" stroke-width="12" stroke-linecap="butt" fill="none" opacity=".85"/>
+<path d="M600 326 L600 342" stroke="#7e3f63" stroke-width="12" fill="none" opacity=".85"/>
+<!-- Trassen-Sprossen -->
+<g stroke="#7e3f63" stroke-width="2" opacity=".9">
+  <path d="M600 208 L624 194"/><path d="M660 243 L684 229"/><path d="M720 277 L744 263"/><path d="M780 312 L804 298"/>
+</g>
+
+<!-- ===== RLT-Gerät (orange Box) mit Lamellen ===== -->
+<path d="M96 468 L232 546 L172 581 L36 503 Z" fill="#d97247"/>
+<path d="M36 503 L172 581 L172 649 L36 571 Z" fill="#a34f2c"/>
+<path d="M172 581 L232 546 L232 614 L172 649 Z" fill="#bf5f37"/>
+<g stroke="#822f10" stroke-width="3" opacity=".6">
+  <path d="M60 525 L148 575"/><path d="M60 543 L148 593"/><path d="M60 561 L148 611"/>
+</g>
+<path d="M232 546 L318 497 L318 527 L232 576 Z" fill="#caa22f"/>
+
+<!-- ===== Drallauslässe ===== -->
+<g fill="#efe9dd" stroke="#c9c2b4" stroke-width="2">
+  <ellipse cx="560" cy="330" rx="26" ry="15"/>
+  <ellipse cx="640" cy="376" rx="26" ry="15"/>
+  <ellipse cx="736" cy="470" rx="24" ry="14"/>
+</g>
+<g fill="none" stroke="#a39c8e" stroke-width="1.6">
+  <ellipse cx="560" cy="330" rx="16" ry="9"/>
+  <ellipse cx="640" cy="376" rx="16" ry="9"/>
+  <ellipse cx="736" cy="470" rx="15" ry="8.5"/>
+</g>
+</svg>
