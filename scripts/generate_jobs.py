@@ -117,7 +117,7 @@ def seite(titel, beschreibung, kanonisch, kopf_extra, body):
 <title>{esc(titel)}</title>
 <meta name="description" content="{esc(beschreibung)}">
 <link rel="canonical" href="{kanonisch}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23ef9873'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YSC Senol Consulting">
 <meta property="og:title" content="{esc(titel)}">
