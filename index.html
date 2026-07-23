@@ -160,6 +160,18 @@
   @media (max-width:900px){.g-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:560px){.g-grid{grid-template-columns:1fr}}
 
+  /* ---------- Branchen (Kernindustrien) ---------- */
+  .branchen h2{font-size:clamp(30px,4vw,48px);margin-bottom:14px}
+  .b-grid{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .b-cell{background:var(--paper);padding:34px 30px 40px;transition:background .2s}
+  .b-cell:hover{background:var(--paper-deep)}
+  .b-cell .mono{color:var(--muted);display:block;margin-bottom:16px}
+  .b-cell h3{font-family:"Segoe UI Black","Segoe UI",Arial,sans-serif;font-weight:900;font-size:21px;letter-spacing:-.01em;margin-bottom:10px}
+  .b-cell p{font-size:14px;color:var(--muted);line-height:1.55}
+  .b-cell:hover h3::after{content:"";display:inline-block;width:.3em;height:.3em;border-radius:50%;background:var(--coral);margin-left:.18em}
+  @media (max-width:900px){.b-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.b-grid{grid-template-columns:1fr}}
+
   /* ---------- Zwei Wege ---------- */
   .wege .wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
   .weg{background:var(--paper);padding:64px 56px}
@@ -226,6 +238,7 @@
     <a class="brand" href="#top" aria-label="YSC Senol Consulting"><img src="logo.svg" alt="YSC Senol Consulting" style="height:34px;display:block"></a>
     <div class="nav-links">
       <a href="#leistungen">Leistungen</a>
+      <a href="#branchen">Branchen</a>
       <a href="#unternehmen">Für Unternehmen</a>
       <a href="#kandidaten">Für Kandidaten</a>
       <a href="#ueber">Über YSC</a>
@@ -367,6 +380,23 @@
         <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#54a9c4"></span>KÄLTE / KLIMA</span><h3>Kälte- &amp; Klimatechnik</h3><p>Kältetechnik, Klimasysteme, Wärmepumpen: Spezialisten für ein Feld im Umbruch.</p></div>
         <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#c2453a"></span>BS</span><h3>Brandschutz &amp; Sprinkler</h3><p>Anlagentechnischer Brandschutz: kleines Feld, hohe Verantwortung, rare Profile.</p></div>
         <div class="g-cell rv"><span class="mono"><span class="sw" style="background:#ef9873"></span>PLANUNG</span><h3>TGA-Gesamtplanung</h3><p>Ingenieurbüros und Generalplaner: BIM, technische Systemplanung, Projektsteuerung.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANCHEN (Kernindustrien) -->
+  <section class="branchen" id="branchen">
+    <div class="wrap">
+      <p class="mono eyebrow rv">Branchen</p>
+      <h2 class="disp rv">Kernindustrien, in denen wir vermitteln<span class="dot"></span></h2>
+      <p class="lead rv">Technische Gebäudeausrüstung ist überall — aber jede Branche stellt eigene Anforderungen an Menschen und Technik. Wir kennen die Unterschiede.</p>
+      <div class="b-grid">
+        <div class="b-cell rv"><span class="mono">01</span><h3>Krankenhaus &amp; Labor</h3><p>Hygiene, Redundanz und Betrieb unter Volllast: Profile, die kritische Infrastruktur sicher beherrschen.</p></div>
+        <div class="b-cell rv"><span class="mono">02</span><h3>Reinraum &amp; Pharma</h3><p>GMP-Umgebungen, Qualifizierung und Präzision: Spezialisten für die anspruchsvollsten Bauumgebungen.</p></div>
+        <div class="b-cell rv"><span class="mono">03</span><h3>Rechenzentren</h3><p>Kälte, Energieversorgung und Verfügbarkeit rund um die Uhr: eines der am schnellsten wachsenden Felder der TGA.</p></div>
+        <div class="b-cell rv"><span class="mono">04</span><h3>Industrie &amp; Anlagenbau</h3><p>Prozesstechnik, Produktionsnähe und Termindruck: Fachkräfte, die auf der Baustelle bestehen.</p></div>
+        <div class="b-cell rv"><span class="mono">05</span><h3>Büro- &amp; Gewerbebau</h3><p>Großprojekte, BIM und Nachhaltigkeitsstandards: vom Fachplaner bis zur Projektleitung.</p></div>
+        <div class="b-cell rv"><span class="mono">06</span><h3>Wohnungsbau &amp; Quartiere</h3><p>Wärmewende, serielles Planen und enger Kostenrahmen: Profile mit Blick für das Wirtschaftliche.</p></div>
       </div>
     </div>
   </section>
