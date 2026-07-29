@@ -28,7 +28,12 @@ def job_anker(titel, stadt):
 
 def render_beschr(text):
     zeilen = str(text or "").splitlines(); out=[]; liste=False
-    koepfe = {"Ihre Aufgaben","Ihr Profil","Wir bieten"}
+    # Neue Gliederung ab 29.07.2026: klar aus Sicht der Personalberatung formuliert
+    # ("Wir bieten" las sich, als sei die Stelle bei YSC zu besetzen).
+    # Die alten Ueberschriften bleiben als Fallback stehen, falls ein Text noch nicht umgestellt ist.
+    koepfe = {"Unser Partner", "Ihr Verantwortungsbereich", "Das bringen Sie mit",
+              "Das dürfen Sie erwarten",
+              "Ihre Aufgaben", "Ihr Profil", "Wir bieten"}
     def zu():
         nonlocal liste
         if liste: out.append("</ul>"); liste=False
