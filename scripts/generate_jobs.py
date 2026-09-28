@@ -12,6 +12,25 @@ WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JOBS_DIR = os.path.join(WURZEL, "jobs")
 HEUTE = datetime.date.today().isoformat()
 
+# Geschlossene Stellen: statt eines nackten 404 bekommt die alte URL eine
+# Weiterleitung auf /jobs/ (alte Bewerbungslinks aus Mails/Social Media laufen
+# sonst ins Leere). Hier eintragen, sobald eine Position vom Netz geht und ihr
+# altes Kuerzel nicht mehr unter jobs/<kuerzel>/ erscheint. Kuerzel, die gerade
+# wieder aktiv sind, werden automatisch uebersprungen (siehe unten).
+ALTE_STELLEN_SLUGS = [
+    "bauleitung-elt-remote",
+    "bauleitung-hls-remote",
+    "fachplanung-hls-bremen",
+    "fachplanung-hls-frankfurt-am-main",
+    "fachplanung-hls-hassfurt",
+    "projektleitung-hls-bremen",
+    "projektleitung-hls-hassfurt",
+    "teamleitung-tga-koeln",
+    "technische-systemplanung-hls-bremen",
+    "technische-systemplanung-hls-hassfurt",
+    "tga-ingenieur-berater-stuttgart",
+]
+
 def esc(s): return html.escape("" if s is None else str(s), quote=True)
 
 # Slug-Logik: MUSS identisch zum CRM (index.html jobSlug/jobAnker) bleiben!
@@ -223,6 +242,30 @@ def haupt():
             f.write(seite(f'{j.get("jobtitel")} · {ort or "TGA & Bau"} | YSC Senol Consulting',
                           kurzbeschreibung(j.get("beschreibung")) or "Offene Position in TGA & Bau bei YSC Senol Consulting.",
                           url, kopf_extra, body))
+
+    # ---------- Weiterleitungen fuer geschlossene Stellen ----------
+    # GitHub Pages kennt keine echten serverseitigen 301er, deshalb der uebliche
+    # Ersatz: Meta-Refresh (0 Sekunden) + JS-Redirect, von Google wie eine
+    # dauerhafte Weiterleitung behandelt. Kein noindex, damit das Ziel /jobs/
+    # das Signal der alten URL uebernehmen kann.
+    for slug in ALTE_STELLEN_SLUGS:
+        if slug in belegt:
+            continue  # Kuerzel ist gerade wieder eine echte, offene Stelle
+        ziel = f"{BASIS}/jobs/"
+        body = f'''<header><nav class="nav"><a class="brand" href="/"><img src="/logo.svg" alt="YSC Senol Consulting" style="height:30px;display:block"></a><a class="back" href="/jobs/">← Alle Positionen</a></nav></header>
+<main>
+  <p class="mono">Diese Position ist besetzt</p>
+  <h1>Weiter zu den aktuellen Positionen<span class="dot"></span></h1>
+  <p class="meta">Diese Stelle ist nicht mehr verfügbar. Du wirst automatisch weitergeleitet.</p>
+  <div class="cta"><a class="btn btn-coral" href="/jobs/">Zu den aktuellen Positionen →</a></div>
+</main>
+{FUSS}'''
+        kopf_extra = f'<meta http-equiv="refresh" content="0; url={ziel}"><script>location.replace("/jobs/")</script>'
+        os.makedirs(os.path.join(JOBS_DIR, slug), exist_ok=True)
+        with open(os.path.join(JOBS_DIR, slug, "index.html"), "w", encoding="utf-8") as f:
+            f.write(seite("Position nicht mehr verfügbar · YSC Senol Consulting",
+                          "Diese Position wurde besetzt. Hier geht es zu den aktuellen offenen Stellen bei YSC Senol Consulting.",
+                          ziel, kopf_extra, body))
 
     # ---------- Übersicht ----------
     karten = "\n".join(
