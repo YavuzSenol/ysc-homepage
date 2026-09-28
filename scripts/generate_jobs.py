@@ -258,6 +258,16 @@ def haupt():
     eintraege = [f'  <url><loc>{BASIS}/</loc><lastmod>{HEUTE}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>',
                  f'  <url><loc>{BASIS}/jobs/</loc><lastmod>{HEUTE}</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>']
     eintraege += [f'  <url><loc>{BASIS}/jobs/{j["_anker"]}/</loc><lastmod>{HEUTE}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>' for j in jobs]
+    # Wissen-Bereich (Fachartikel): fehlte bisher komplett in der Sitemap, weil dieser
+    # taegliche Lauf sie jedesmal komplett neu schreibt und den Wissen-Ordner nie kannte.
+    # Google stufte die Artikel deshalb dauerhaft als "Gefunden - zurzeit nicht indexiert"
+    # ein. Ordner wird gescannt, damit kuenftige Artikel automatisch mit aufgenommen werden.
+    wissen_dir = os.path.join(WURZEL, "wissen")
+    if os.path.isdir(wissen_dir):
+        eintraege.append(f'  <url><loc>{BASIS}/wissen/</loc><lastmod>{HEUTE}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>')
+        for name in sorted(os.listdir(wissen_dir)):
+            if os.path.isfile(os.path.join(wissen_dir, name, "index.html")):
+                eintraege.append(f'  <url><loc>{BASIS}/wissen/{name}/</loc><lastmod>{HEUTE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
     with open(os.path.join(WURZEL, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 + "\n".join(eintraege) + "\n</urlset>\n")
