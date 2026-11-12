@@ -313,7 +313,8 @@ def haupt():
                 eintraege.append(f'  <url><loc>{BASIS}/wissen/{name}/</loc><lastmod>{HEUTE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
     # SEO-Landingpages (Personalberatung/Headhunter): der Lauf schreibt die Sitemap jeden Tag neu, daher hier fest eingetragen
     for slug, prio in (("tga-personalberatung-koeln", "0.9"), ("tga-headhunter-koeln", "0.9"),
-                       ("tga-headhunter-hls", "0.8"), ("tga-headhunter-elektrotechnik", "0.8")):
+                       ("tga-headhunter-hls", "0.8"), ("tga-headhunter-elektrotechnik", "0.8"),
+                       ("tga-headhunter-gebaeudeautomation", "0.8")):
         if os.path.isfile(os.path.join(WURZEL, slug, "index.html")):
             eintraege.append(f'  <url><loc>{BASIS}/{slug}/</loc><lastmod>{HEUTE}</lastmod><changefreq>monthly</changefreq><priority>{prio}</priority></url>')
     with open(os.path.join(WURZEL, "sitemap.xml"), "w", encoding="utf-8") as f:
