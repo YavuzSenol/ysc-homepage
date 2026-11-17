@@ -16,6 +16,18 @@ BASIS = "https://senolconsulting.de"
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
 
 
+# Fachseiten, auf die Beitraege verweisen koennen (Feld "verwandt" in news/*.json). Schluessel = Ordnername im Wurzelverzeichnis.
+FACHSEITEN = {
+    "tga-personalberatung-koeln": "TGA Personalberatung Köln",
+    "tga-headhunter-koeln": "TGA Headhunter Köln",
+    "tga-headhunter-hls": "Headhunter HLS: Heizung, Lüftung, Sanitär",
+    "tga-headhunter-elektrotechnik": "Headhunter Elektrotechnik",
+    "tga-headhunter-kaelte-klima": "Headhunter Kälte und Klima",
+    "tga-headhunter-gebaeudeautomation": "Headhunter Gebäudeautomation",
+    "tga-headhunter-brandschutz": "Headhunter Brandschutz",
+}
+
+
 def deutsch(iso):
     j, m, t = iso.split("-")
     return f"{int(t)}. {MONATE[int(m) - 1]} {j}"
@@ -69,6 +81,10 @@ def seite(n):
         "mainEntityOfPage": url}, ensure_ascii=False)
     absaetze = "\n".join(f"    <p>{e(p)}</p>" for p in n["absaetze"])
     einordnung = "\n".join(f"    <p>{e(p)}</p>" for p in n["einordnung"])
+    verwandt = ""
+    if n.get("verwandt"):
+        links = " · ".join(f'<a href="/{s}/" style="color:var(--coral-deep);text-decoration:underline;text-underline-offset:2px">{e(FACHSEITEN[s])}</a>' for s in n["verwandt"])
+        verwandt = f'\n    <p style="margin-top:28px;font-size:15px"><b>Passend dazu:</b> {links}</p>\n'
     quellen = "\n".join(
         f'      <p>{e(q["name"])}: <a href="{e(q["url"])}" rel="noopener">{e(q["titel"])}</a> ({deutsch(q["datum"])})</p>' for q in n["quellen"])
     return f"""<!doctype html>
@@ -108,7 +124,7 @@ def seite(n):
 
     <h2>Unsere Einordnung</h2>
 {einordnung}
-
+{verwandt}
     <div class="quellen">
       <h2>Quellen</h2>
 {quellen}
@@ -162,6 +178,41 @@ def main():
     with open(hub, "w", encoding="utf-8", newline="\n") as f:
         f.write(h)
     print("Uebersicht aktualisiert:", len(eintraege), "Karten")
+    fachseiten_aktualisieren(eintraege)
+
+
+def fachseiten_aktualisieren(eintraege):
+    """Auf jeder Fachseite einen Block 'Aktuell aus der Branche' mit den bis zu drei neuesten Beitraegen, die auf sie verweisen."""
+    for s in FACHSEITEN:
+        pfad = os.path.join(WURZEL, s, "index.html")
+        if not os.path.isfile(pfad):
+            continue
+        passend = [n for n in eintraege if s in n.get("verwandt", [])][:3]
+        h = open(pfad, encoding="utf-8").read()
+        if passend:
+            zeilen = "\n".join(f'      <li style="margin:6px 0"><a href="/wissen/{n["slug"]}/" style="color:var(--coral-deep);text-decoration:underline;text-underline-offset:2px">{e(n["titel"])}</a> <span style="color:var(--muted);font-size:13px">({deutsch(n["datum"])})</span></li>' for n in passend)
+            block = ('<!--NEWS-LINKS-START-->\n'
+                     '  <section style="max-width:40em;margin:40px 0 0;padding-top:22px;border-top:1px solid var(--line)">\n'
+                     '    <p class="mono">Aktuell aus der Branche</p>\n'
+                     f'    <ul style="list-style:none;padding:0;margin:10px 0 0">\n{zeilen}\n    </ul>\n'
+                     '    <p style="margin-top:10px;font-size:14px"><a href="/wissen/" style="color:var(--muted)">Alle Beiträge im Fachwissen →</a></p>\n'
+                     '  </section>\n  <!--NEWS-LINKS-ENDE-->')
+        else:
+            block = ""
+        if "<!--NEWS-LINKS-START-->" in h:
+            neu = re.sub(r"<!--NEWS-LINKS-START-->.*?<!--NEWS-LINKS-ENDE-->", lambda m: block, h, flags=re.S)
+        elif block:
+            marke = '  <div class="abschluss">'
+            if marke not in h:
+                print("Einfuegestelle fehlt in", s)
+                continue
+            neu = h.replace(marke, "  " + block + "\n\n" + marke, 1)
+        else:
+            continue
+        if neu != h:
+            with open(pfad, "w", encoding="utf-8", newline="\n") as f:
+                f.write(neu)
+            print("Fachseite aktualisiert:", s, len(passend), "Beitraege")
 
 
 if __name__ == "__main__":

@@ -12,6 +12,16 @@
     "Gesucht sind außerdem Projektleiter, die gewerkeübergreifend steuern können. Fachlich stark zu sein reicht dort nicht, entscheidend ist auch die Zusammenarbeit über Gewerkegrenzen hinweg."
   ],
   "quellen": [
-    {"name": "TAB", "titel": "5. TGA-Wirtschaftsforum: Rechenzentren brauchen innovative Technik und eine neue Kultur der Zusammenarbeit", "url": "https://www.tab.de/news/5-tga-wirtschaftsforum-rechenzentren-brauchen-innovative-technik-und-eine-neue-kultur-der-zusammenarbeit-4450302.html", "datum": "2026-11-09"}
+    {
+      "name": "TAB",
+      "titel": "5. TGA-Wirtschaftsforum: Rechenzentren brauchen innovative Technik und eine neue Kultur der Zusammenarbeit",
+      "url": "https://www.tab.de/news/5-tga-wirtschaftsforum-rechenzentren-brauchen-innovative-technik-und-eine-neue-kultur-der-zusammenarbeit-4450302.html",
+      "datum": "2026-11-09"
+    }
+  ],
+  "verwandt": [
+    "tga-headhunter-kaelte-klima",
+    "tga-headhunter-elektrotechnik",
+    "tga-headhunter-gebaeudeautomation"
   ]
 }

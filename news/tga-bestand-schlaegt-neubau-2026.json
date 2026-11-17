@@ -12,7 +12,22 @@
     "Wer sein Profil in diese Richtung schärft, hat in den kommenden Jahren die besseren Karten."
   ],
   "quellen": [
-    {"name": "BTGA", "titel": "BTGA-Branchenbarometer Herbst 2026", "url": "https://www.btga.de/btga-branchenbarometer-herbst-2026/", "datum": "2026-11-09"},
-    {"name": "TAB", "titel": "Nichtwohnbau bleibt wichtigster Investitionsmarkt", "url": "https://www.tab.de/news/nichtwohnbau-bleibt-wichtigster-investitionsmarkt-4449371.html", "datum": "2026-11-04"}
+    {
+      "name": "BTGA",
+      "titel": "BTGA-Branchenbarometer Herbst 2026",
+      "url": "https://www.btga.de/btga-branchenbarometer-herbst-2026/",
+      "datum": "2026-11-09"
+    },
+    {
+      "name": "TAB",
+      "titel": "Nichtwohnbau bleibt wichtigster Investitionsmarkt",
+      "url": "https://www.tab.de/news/nichtwohnbau-bleibt-wichtigster-investitionsmarkt-4449371.html",
+      "datum": "2026-11-04"
+    }
+  ],
+  "verwandt": [
+    "tga-headhunter-hls",
+    "tga-headhunter-gebaeudeautomation",
+    "tga-personalberatung-koeln"
   ]
 }
